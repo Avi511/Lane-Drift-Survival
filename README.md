@@ -2,7 +2,7 @@
 
 **Lane Drift Survival** is an endless, fast-paced arcade driving game built entirely with Vanilla JavaScript, HTML5 Canvas, and CSS. Avoid incoming traffic, manage your speed, and adapt to rapidly changing weather conditions in this test of reflexes and endurance!
 
-![Game Preview](https://via.placeholder.com/800x400.png?text=Lane+Drift+Survival) *Replace this with an actual screenshot once hosted*
+![Game Preview](./preview.png)
 
 ---
 
