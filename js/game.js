@@ -12,7 +12,7 @@ const Game = (() => {
   let score = 0;
   let hiScore = parseInt(localStorage.getItem('ldsHiScore') || '0');
   let hiSpeed = parseInt(localStorage.getItem('ldsHiSpeed') || '0');
-  let hiDriver = localStorage.getItem('ldsHiDriver') || 'GHOST';
+  let hiDriver = localStorage.getItem('ldsHiDriver') || '-';
   let curDriver = localStorage.getItem('ldsCurDriver') || 'DRIVER 1';
   let dodgeCount = 0;
   let frame = 0;
