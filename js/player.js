@@ -65,12 +65,12 @@ const Player = (() => {
   }
 
   function trySwitch(dir) {
-    const newLane = Utils.clamp(lane + dir, 0, LANES - 1);
-    if (newLane === lane && targetLane === lane) return;
-
-    // Removed random overshoot for better player comfort and control
-    targetLane = newLane;
+    // Modify targetLane relative to its current target, not its current physical lane
+    const nextLane = Utils.clamp(targetLane + dir, 0, LANES - 1);
     
+    if (nextLane === targetLane) return; // already headed as far as possible in that direction
+
+    targetLane = nextLane;
     Audio.SFX.laneSwitch();
   }
 
