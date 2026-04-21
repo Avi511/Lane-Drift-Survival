@@ -9,7 +9,7 @@
 ## 🕹️ Play the Game
 
 The game is hosted and fully playable directly in your browser:
-**➡️ [Play Lane Drift Survival Here](https://Avi511.github.io/Lane-Drift-Survival/) ⬅️** *(Ensure this link matches your actual GitHub Pages URL)*
+**➡️ [Play Lane Drift Survival Here](https://lane-drift-survival.netlify.app/) ⬅️**
 
 ---
 
