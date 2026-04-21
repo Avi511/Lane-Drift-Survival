@@ -18,6 +18,11 @@
       </div>
       <div class="menu-car">🚗</div>
 
+      <div class="driver-setup">
+        <label for="driverName">DRIVER NAME</label>
+        <input type="text" id="driverName" placeholder="ENTER NAME" maxlength="12" />
+      </div>
+
       <div class="difficulty-select">
         <p class="select-label">SELECT DIFFICULTY</p>
         <div class="diff-buttons">
@@ -28,6 +33,21 @@
       </div>
 
       <button id="startBtn" class="start-btn">START ENGINE</button>
+
+      <div class="career-stats">
+        <div class="career-stat">
+          <span class="career-label">ALL-TIME BEST</span>
+          <span id="menuBestScore" class="career-val">0 m</span>
+        </div>
+        <div class="career-stat">
+          <span class="career-label">TOP SPEED</span>
+          <span id="menuBestSpeed" class="career-val">0 km/h</span>
+        </div>
+        <div class="career-stat">
+          <span class="career-label">TOP DRIVER</span>
+          <span id="menuBestDriver" class="career-val">---</span>
+        </div>
+      </div>
 
       <div class="controls-hint">
         <span>← → or A D &nbsp;|&nbsp; Switch Lanes</span>
@@ -48,6 +68,10 @@
         <div class="hud-best">
           <span class="hud-label">BEST</span>
           <span id="bestVal">0</span>
+        </div>
+        <div class="hud-driver">
+          <span class="hud-label">DRIVER</span>
+          <span id="hudDriverName">---</span>
         </div>
       </div>
       <div class="hud-center">
@@ -101,12 +125,25 @@
     </div>
   </div>
 
+  <!-- PAUSE SCREEN -->
+  <div id="pauseScreen" class="screen">
+    <div class="pause-content">
+      <h1 class="pause-title">PAUSED</h1>
+      <div class="pause-buttons">
+        <button id="resumeBtn" class="pause-btn primary">RESUME</button>
+        <button id="pauseRestartBtn" class="pause-btn">RESTART</button>
+        <button id="pauseMenuBtn" class="pause-btn">MAIN MENU</button>
+      </div>
+    </div>
+  </div>
+
   <script src="js/utils.js"></script>
   <script src="js/audio.js"></script>
   <script src="js/weather.js"></script>
   <script src="js/player.js"></script>
   <script src="js/traffic.js"></script>
   <script src="js/renderer.js"></script>
+  <script src="js/ui.js"></script>
   <script src="js/game.js"></script>
 </body>
 </html>

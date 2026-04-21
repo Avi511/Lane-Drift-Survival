@@ -163,12 +163,77 @@ html, body {
 }
 .start-btn:active { transform: scale(0.97); }
 
+/* ── DRIVER SETUP ── */
+.driver-setup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+.driver-setup label {
+  font-family: var(--font-head);
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--clr-muted);
+}
+.driver-setup input {
+  background: rgba(0,0,0,0.4);
+  border: 1px solid var(--clr-lane);
+  padding: 10px 15px;
+  border-radius: 4px;
+  color: var(--clr-accent);
+  font-family: var(--font-mono);
+  font-size: 16px;
+  text-align: center;
+  transition: border-color 0.3s;
+  width: min(240px, 80vw);
+}
+.driver-setup input:focus {
+  outline: none;
+  border-color: var(--clr-accent);
+  background: rgba(0,245,255,0.05);
+}
+
 .controls-hint {
   display: flex;
   gap: 24px;
-  font-size: 12px;
+  font-size: 11px;
   color: var(--clr-muted);
   letter-spacing: 1px;
+  opacity: 0.8;
+}
+
+/* ── CAREER STATS ── */
+.career-stats {
+  display: flex;
+  gap: 40px;
+  margin-top: 10px;
+  padding: 15px 30px;
+  background: rgba(0, 245, 255, 0.03);
+  border: 1px solid rgba(0, 245, 255, 0.1);
+  border-radius: 8px;
+}
+
+.career-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.career-label {
+  font-family: var(--font-head);
+  font-size: 9px;
+  color: var(--clr-muted);
+  letter-spacing: 2px;
+}
+
+.career-val {
+  font-family: var(--font-head);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--clr-accent);
 }
 
 /* ── GAME SCREEN ── */
@@ -369,4 +434,68 @@ html, body {
 .menu-btn:hover {
   border-color: var(--clr-text);
   color: var(--clr-text);
+}
+
+/* ── PAUSE SCREEN ── */
+#pauseScreen {
+  background: rgba(10, 10, 20, 0.85);
+  backdrop-filter: blur(8px);
+  flex-direction: column;
+  z-index: 50; /* Ensure on top of game screen and HUD */
+}
+
+.pause-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  animation: zoomIn 0.3s ease-out;
+}
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.pause-title {
+  font-family: var(--font-head);
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--clr-text);
+  letter-spacing: 12px;
+  text-shadow: 0 0 30px rgba(255,255,255,0.2);
+}
+
+.pause-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 220px;
+}
+
+.pause-btn {
+  font-family: var(--font-head);
+  font-size: 13px;
+  letter-spacing: 3px;
+  padding: 14px;
+  background: transparent;
+  border: 1px solid var(--clr-muted);
+  color: var(--clr-muted);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+.pause-btn:hover {
+  border-color: var(--clr-text);
+  color: var(--clr-text);
+  background: rgba(255,255,255,0.05);
+}
+.pause-btn.primary {
+  background: var(--clr-accent);
+  border-color: var(--clr-accent);
+  color: #000;
+  font-weight: 700;
+}
+.pause-btn.primary:hover {
+  box-shadow: 0 0 20px rgba(0, 245, 255, 0.4);
+  transform: translateY(-2px);
 }
