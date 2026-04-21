@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lane Drift Survival</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- MENU SCREEN -->
+  <div id="menuScreen" class="screen active">
+    <div class="menu-bg"></div>
+    <div class="menu-content">
+      <div class="game-logo">
+        <span class="logo-top">LANE DRIFT</span>
+        <span class="logo-bottom">SURVIVAL</span>
+      </div>
+      <div class="menu-car">🚗</div>
+
+      <div class="difficulty-select">
+        <p class="select-label">SELECT DIFFICULTY</p>
+        <div class="diff-buttons">
+          <button class="diff-btn active" data-diff="easy">EASY</button>
+          <button class="diff-btn" data-diff="normal">NORMAL</button>
+          <button class="diff-btn" data-diff="hard">HARD</button>
+        </div>
+      </div>
+
+      <button id="startBtn" class="start-btn">START ENGINE</button>
+
+      <div class="controls-hint">
+        <span>← → or A D &nbsp;|&nbsp; Switch Lanes</span>
+        <span>SPACE &nbsp;|&nbsp; Brake</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- GAME SCREEN -->
+  <div id="gameScreen" class="screen">
+    <canvas id="gameCanvas"></canvas>
+    <div id="hud">
+      <div class="hud-left">
+        <div class="hud-score">
+          <span class="hud-label">SCORE</span>
+          <span id="scoreVal">0</span>
+        </div>
+        <div class="hud-best">
+          <span class="hud-label">BEST</span>
+          <span id="bestVal">0</span>
+        </div>
+      </div>
+      <div class="hud-center">
+        <div id="weatherDisplay" class="weather-badge">☀️ CLEAR</div>
+        <div id="speedDisplay" class="speed-badge">60 km/h</div>
+      </div>
+      <div class="hud-right">
+        <div class="hud-health">
+          <span class="hud-label">HEALTH</span>
+          <div id="healthBar">
+            <div id="healthFill"></div>
+          </div>
+        </div>
+        <div class="hud-lives">
+          <span id="livesDisplay">❤️ ❤️ ❤️</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Weather Warning Banner -->
+    <div id="weatherWarning" class="weather-warning hidden"></div>
+  </div>
+
+  <!-- GAME OVER SCREEN -->
+  <div id="gameOverScreen" class="screen">
+    <div class="gameover-content">
+      <div class="crash-icon">💥</div>
+      <h1 class="gameover-title">CRASHED!</h1>
+      <div class="gameover-stats">
+        <div class="stat-row">
+          <span class="stat-label">DISTANCE</span>
+          <span id="finalScore" class="stat-val">0 m</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">TOP SPEED</span>
+          <span id="finalSpeed" class="stat-val">0 km/h</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">CARS DODGED</span>
+          <span id="finalDodged" class="stat-val">0</span>
+        </div>
+        <div class="stat-row highlight">
+          <span class="stat-label">BEST SCORE</span>
+          <span id="finalBest" class="stat-val">0 m</span>
+        </div>
+      </div>
+      <div class="gameover-buttons">
+        <button id="restartBtn" class="start-btn">TRY AGAIN</button>
+        <button id="menuBtn" class="menu-btn">MAIN MENU</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/utils.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/weather.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/traffic.js"></script>
+  <script src="js/renderer.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
