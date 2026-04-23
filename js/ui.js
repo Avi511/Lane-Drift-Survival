@@ -61,6 +61,30 @@ const UI = (() => {
         Player.setBraking(false);
       });
     }
+
+    // Instructions Modal
+    const instructionsModal = document.getElementById('instructionsModal');
+    const howToPlayBtn = document.getElementById('howToPlayBtn');
+    const closeInstructionsBtn = document.getElementById('closeInstructionsBtn');
+
+    if (howToPlayBtn) {
+      howToPlayBtn.addEventListener('click', () => {
+        instructionsModal.classList.add('active');
+      });
+    }
+
+    if (closeInstructionsBtn) {
+      closeInstructionsBtn.addEventListener('click', () => {
+        instructionsModal.classList.remove('active');
+      });
+    }
+
+    // Close modal on click outside content
+    instructionsModal.addEventListener('click', (e) => {
+      if (e.target === instructionsModal) {
+        instructionsModal.classList.remove('active');
+      }
+    });
   }
 
   return { init };

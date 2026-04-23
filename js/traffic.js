@@ -17,9 +17,9 @@ const Traffic = (() => {
 
   // Obstacle types
   const OBS_TYPES = [
-    { id: 'cone',     w: 18, h: 22, color: '#ff6b35' },
-    { id: 'barrier',  w: 90, h: 18, color: '#f0b429', laneSpan: true },
-    { id: 'debris',   w: 26, h: 20, color: '#888' },
+    { id: 'cone', w: 18, h: 22, color: '#ff6b35' },
+    { id: 'barrier', w: 90, h: 18, color: '#f0b429', laneSpan: true },
+    { id: 'debris', w: 26, h: 20, color: '#888' },
   ];
 
   let cars = [];
@@ -36,9 +36,9 @@ const Traffic = (() => {
 
   // Difficulty settings
   const DIFF = {
-    easy:   { baseGap: 220, minGap: 110, spawnChance: 0.7 },
-    normal: { baseGap: 160, minGap:  80, spawnChance: 0.85 },
-    hard:   { baseGap: 100, minGap:  55, spawnChance: 1.0  }
+    easy: { baseGap: 220, minGap: 110, spawnChance: 0.7 },
+    normal: { baseGap: 160, minGap: 80, spawnChance: 0.85 },
+    hard: { baseGap: 100, minGap: 55, spawnChance: 1.0 }
   };
 
   let diff = DIFF.normal;
@@ -77,16 +77,41 @@ const Traffic = (() => {
   function spawnObstacle() {
     const type = Utils.randFrom(OBS_TYPES);
     const lane = Utils.randInt(0, LANES - 1);
-    const ox = laneX[lane] + laneW / 2 - type.w / 2;
-    obstacles.push({
-      x: type.laneSpan ? laneX[0] + 10 : ox,
-      y: -type.h - 10,
-      w: type.laneSpan ? laneX[LANES - 1] + laneW - laneX[0] - 20 : type.w,
-      h: type.h,
-      type: type.id,
-      color: type.color,
-      lane
-    });
+
+    if (type.laneSpan) {
+      // For barriers, we pick ONE lane to keep OPEN
+      const openLane = Utils.randInt(0, LANES - 1);
+      const startLane = openLane === 0 ? 1 : 0;
+      const endLane = openLane === LANES - 1 ? LANES - 2 : LANES - 1;
+
+      // If the open lane is the middle one, we actually need TWO separate barrier segments
+      // But for simplicity, let's just make the barrier cover 2 out of 3 lanes instead.
+      const blockedLanes = [0, 1, 2].filter(l => l !== openLane);
+
+      // We'll spawn 2 separate obstacles for the blocked lanes
+      blockedLanes.forEach(l => {
+        obstacles.push({
+          x: laneX[l] + 5,
+          y: -type.h - 10,
+          w: laneW - 10,
+          h: type.h,
+          type: 'barrier',
+          color: type.color,
+          lane: l
+        });
+      });
+    } else {
+      const ox = laneX[lane] + laneW / 2 - type.w / 2;
+      obstacles.push({
+        x: ox,
+        y: -type.h - 10,
+        w: type.w,
+        h: type.h,
+        type: type.id,
+        color: type.color,
+        lane
+      });
+    }
   }
 
   function update(gameSpeed, score, visionMult, onDodge, onHit) {
@@ -109,13 +134,10 @@ const Traffic = (() => {
 
     const px = Player.x, py = Player.y, pw = Player.w, ph = Player.h;
 
-    // ── Update cars ───────────────────────────────────────────
     for (let i = cars.length - 1; i >= 0; i--) {
       const c = cars[i];
       c.y += c.speed - Player.brakeVel * gameSpeed * 0.4;
 
-      // Vision culling: fog hides cars until they're closer
-      // visionMult < 1 means cars only become "solid" after a certain Y
       c.visible = c.y > canvasH * (1 - visionMult) - CAR_H * 2;
 
       // Score dodge

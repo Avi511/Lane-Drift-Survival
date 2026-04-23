@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lane Drift Survival</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚗</text></svg>">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚗</text></svg>">
   <link rel="stylesheet" href="css/style.css" />
 </head>
+
 <body>
 
   <!-- MENU SCREEN -->
@@ -33,7 +36,10 @@
         </div>
       </div>
 
-      <button id="startBtn" class="start-btn">START ENGINE</button>
+      <div class="menu-actions">
+        <button id="startBtn" class="start-btn">START ENGINE</button>
+        <button id="howToPlayBtn" class="how-to-play-btn">HOW TO PLAY</button>
+      </div>
 
       <div class="career-stats">
         <div class="career-stat">
@@ -49,10 +55,68 @@
           <span id="menuBestDriver" class="career-val">---</span>
         </div>
       </div>
+    </div>
 
-      <div class="controls-hint">
-        <span>← → or A D &nbsp;|&nbsp; Switch Lanes</span>
-        <span>SPACE &nbsp;|&nbsp; Brake</span>
+    <!-- INSTRUCTIONS MODAL -->
+    <div id="instructionsModal" class="modal">
+      <div class="modal-content">
+        <h2 class="modal-title">MISSION BRIEFING</h2>
+
+        <div class="instruction-grid">
+          <div class="inst-section desktop">
+            <h3>DESKTOP</h3>
+            <div class="inst-item">
+              <span class="key">← →</span>
+              <span class="label">Switch Lanes</span>
+            </div>
+            <div class="inst-item">
+              <span class="key">A D</span>
+              <span class="label">Steering</span>
+            </div>
+            <div class="inst-item">
+              <span class="key long">SPACE</span>
+              <span class="label">Emergency Brake</span>
+            </div>
+          </div>
+
+          <div class="inst-section mobile">
+            <h3>MOBILE</h3>
+            <div class="inst-item">
+              <span class="icon">⇦ ⇨</span>
+              <span class="label">Lane Buttons</span>
+            </div>
+            <div class="inst-item">
+              <span class="icon brake">BRAKE</span>
+              <span class="label">Hold to Slow Down</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="survival-guide">
+          <h3>SURVIVAL GUIDE</h3>
+          <div class="guide-grid">
+            <div class="guide-item">
+              <span class="guide-icon">❤️</span>
+              <span class="guide-text"><strong>HEALTH:</strong> Crashing reduces health. 0% = Loss of 1 Life.</span>
+            </div>
+            <div class="guide-item">
+              <span class="guide-icon">🚧</span>
+              <span class="guide-text"><strong>BARRIERS:</strong> Striped barriers always have **ONE OPEN LANE**. Find
+                the gap early!</span>
+            </div>
+            <div class="guide-item">
+              <span class="guide-icon">⚠️</span>
+              <span class="guide-text"><strong>DEBRIS:</strong> Use <strong>BRAKE</strong> to slow down and time your
+                lane switches to avoid road obstacles.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="inst-goal">
+          <p>Dodge traffic, survive weather changes, and reach the furthest distance.</p>
+        </div>
+
+        <button id="closeInstructionsBtn" class="close-modal-btn">UNDERSTOOD</button>
       </div>
     </div>
   </div>
@@ -98,11 +162,15 @@
     <!-- Mobile Controls -->
     <div id="mobileControls" class="mobile-controls">
       <button id="leftBtn" class="ctrl-btn left">
-        <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        <svg viewBox="0 0 24 24">
+          <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+        </svg>
       </button>
       <button id="brakeBtn" class="ctrl-btn brake">BRAKE</button>
       <button id="rightBtn" class="ctrl-btn right">
-        <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+        <svg viewBox="0 0 24 24">
+          <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+        </svg>
       </button>
     </div>
   </div>
@@ -158,4 +226,5 @@
   <script src="js/ui.js"></script>
   <script src="js/game.js"></script>
 </body>
+
 </html>
