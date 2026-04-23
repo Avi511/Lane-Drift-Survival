@@ -33,6 +33,34 @@ const UI = (() => {
         }
       }
     });
+
+    // Mobile Controls
+    const leftBtn = document.getElementById('leftBtn');
+    const rightBtn = document.getElementById('rightBtn');
+    const brakeBtn = document.getElementById('brakeBtn');
+
+    if (leftBtn) {
+      leftBtn.addEventListener('touchstart', e => {
+        e.preventDefault();
+        Player.trySwitch(-1);
+      });
+    }
+    if (rightBtn) {
+      rightBtn.addEventListener('touchstart', e => {
+        e.preventDefault();
+        Player.trySwitch(1);
+      });
+    }
+    if (brakeBtn) {
+      brakeBtn.addEventListener('touchstart', e => {
+        e.preventDefault();
+        Player.setBraking(true);
+      });
+      brakeBtn.addEventListener('touchend', e => {
+        e.preventDefault();
+        Player.setBraking(false);
+      });
+    }
   }
 
   return { init };

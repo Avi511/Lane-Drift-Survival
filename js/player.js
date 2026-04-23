@@ -143,8 +143,12 @@ const Player = (() => {
     return true;
   }
 
+  function setBraking(val) {
+    braking = val;
+  }
+
   return {
-    init, bindKeys, trySwitch, update, takeDamage, noteDodge, isVisible,
+    init, bindKeys, trySwitch, update, takeDamage, noteDodge, isVisible, setBraking,
     get x() { return x; },
     get y() { return y; },
     get w() { return CAR_W; },
